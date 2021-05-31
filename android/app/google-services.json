@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1000262972273",
+    "project_id": "informasi-akademik-5cd32",
+    "storage_bucket": "informasi-akademik-5cd32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000262972273:android:e7c84a9281c7eb0cebfcd0",
+        "android_client_info": {
+          "package_name": "com.example.informasi_akademik_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000262972273-d8o6mot4igo8b0tnq5atd87310l2ac1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.informasi_akademik_firebase",
+            "certificate_hash": "ee36fddf8586ebc33f64e2295d3c5727318a3066"
+          }
+        },
+        {
+          "client_id": "1000262972273-h0aef1nhbvh1evqql72451n5loa7nr2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwKq23ZLyr8-7URkzU-F9TN1HNq--15Bg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000262972273-h0aef1nhbvh1evqql72451n5loa7nr2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
