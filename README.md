@@ -1,7 +1,13 @@
 # informasi_akademik_firebase
 
-A new Flutter project.
+Login CRUD with firebase
 
+## Known BUGS & TO DO
+
+-int to string or string to int
+-infinite loading siswas 
+-cant read data siswas
+-ugly ui
 ## Getting Started
 
 This project is a starting point for a Flutter application.
