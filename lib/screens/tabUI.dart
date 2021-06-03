@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:informasi_akademik_firebase/screens/siswas.dart';
 import 'package:informasi_akademik_firebase/screens/mapels.dart';
-import 'package:informasi_akademik_firebase/screens/products.dart';
 
 class TabUI extends StatefulWidget {
   @override
@@ -30,7 +29,6 @@ class _TabUIState extends State<TabUI> {
           body: TabBarView(
             children: [
               Siswas(),
-              // Products(),
               Mapels(),
             ],
           )),

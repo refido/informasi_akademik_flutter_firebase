@@ -34,33 +34,36 @@ class MapelProvider with ChangeNotifier {
 
   //read
   loadValues(Mapel mapel) {
+    _mapelId = mapel.mapelId;
     _kodeMapel = mapel.kodeMapel;
     _mataPelajaran = mapel.mataPelajaran;
     _pengajar = mapel.pengajar;
   }
 
-//create/update
+  //create/update
   saveMapel() {
     print(_mapelId);
     if (_mapelId == null) {
       var newMapel = Mapel(
-          kodeMapel: kodeMapel,
-          mataPelajaran: mataPelajaran,
-          pengajar: pengajar,
-          mapelId: uuid.v4());
+        mapelId: uuid.v4(),
+        kodeMapel: kodeMapel,
+        mataPelajaran: mataPelajaran,
+        pengajar: pengajar,
+      );
       firestoreService.saveMapel(newMapel);
     } else {
       //Update
       var updatedMapel = Mapel(
-          kodeMapel: kodeMapel,
-          mataPelajaran: mataPelajaran,
-          pengajar: pengajar,
-          mapelId: _mapelId);
+        mapelId: _mapelId,
+        kodeMapel: _kodeMapel,
+        mataPelajaran: _mataPelajaran,
+        pengajar: _pengajar,
+      );
       firestoreService.saveMapel(updatedMapel);
     }
   }
 
-//delete
+  //delete
   removeMapel(String mapelId) {
     firestoreService.removeMapel(mapelId);
   }

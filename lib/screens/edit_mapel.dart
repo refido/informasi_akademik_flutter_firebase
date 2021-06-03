@@ -13,15 +13,15 @@ class EditMapel extends StatefulWidget {
 }
 
 class _EditMapelState extends State<EditMapel> {
-  final kodeMapelController = TextEditingController();
-  final mataPelajaranController = TextEditingController();
-  final pengajarController = TextEditingController();
+  final kodeController = TextEditingController();
+  final mapelController = TextEditingController();
+  final guruController = TextEditingController();
 
   @override
   void dispose() {
-    kodeMapelController.dispose();
-    mataPelajaranController.dispose();
-    pengajarController.dispose();
+    kodeController.dispose();
+    mapelController.dispose();
+    guruController.dispose();
     super.dispose();
   }
 
@@ -29,9 +29,9 @@ class _EditMapelState extends State<EditMapel> {
   void initState() {
     if (widget.mapel == null) {
       //New Record
-      kodeMapelController.text = "";
-      mataPelajaranController.text = "";
-      pengajarController.text = "";
+      kodeController.text = "";
+      mapelController.text = "";
+      guruController.text = "";
       new Future.delayed(Duration.zero, () {
         final mapelProvider =
             Provider.of<MapelProvider>(context, listen: false);
@@ -39,9 +39,9 @@ class _EditMapelState extends State<EditMapel> {
       });
     } else {
       //Controller Update
-      kodeMapelController.text = widget.mapel.kodeMapel;
-      mataPelajaranController.text = widget.mapel.mataPelajaran;
-      pengajarController.text = widget.mapel.pengajar;
+      kodeController.text = widget.mapel.kodeMapel;
+      mapelController.text = widget.mapel.mataPelajaran;
+      guruController.text = widget.mapel.pengajar;
       //State Update
       new Future.delayed(Duration.zero, () {
         final mapelProvider =
@@ -64,26 +64,26 @@ class _EditMapelState extends State<EditMapel> {
         child: ListView(
           children: <Widget>[
             TextField(
-              controller: kodeMapelController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Kode Mapel'),
-              onChanged: (value) {
-                mapelProvider.changeKodeMapel(value);
-              },
+              controller: kodeController,
+              decoration: InputDecoration(hintText: 'Kode Mata Pelajaran'),
+              onChanged: (value) => mapelProvider.changeKodeMapel(value),
             ),
             TextField(
-              controller: mataPelajaranController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Nama Mapel'),
+              controller: mapelController,
+              decoration: InputDecoration(hintText: 'Mata Pelajaran'),
               onChanged: (value) {
                 mapelProvider.changeMataPelajaran(value);
               },
             ),
             TextField(
-              controller: pengajarController,
               keyboardType: TextInputType.text,
+              controller: guruController,
               decoration: InputDecoration(hintText: 'Pengajar'),
-              onChanged: (value) => mapelProvider.changePengajar(value),
+              onChanged: (value) {
+                mapelProvider.changePengajar(value);
+              },
             ),
             SizedBox(
               height: 20.0,

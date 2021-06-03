@@ -4,14 +4,19 @@ class Mapel {
   final String mataPelajaran;
   final String pengajar;
 
-  Mapel({this.mapelId, this.kodeMapel, this.mataPelajaran, this.pengajar});
+  Mapel({
+    this.mapelId,
+    this.kodeMapel,
+    this.mataPelajaran,
+    this.pengajar,
+  });
 
   Map<String, dynamic> toMap() {
     return {
       'mapelId': mapelId,
       'kodeMapel': kodeMapel,
       'mataPelajaran': mataPelajaran,
-      'pengajar': pengajar
+      'pengajar': pengajar,
     };
   }
 

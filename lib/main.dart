@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:informasi_akademik_firebase/providers/mapel_provider.dart';
-import 'package:informasi_akademik_firebase/providers/product_provider.dart';
 import 'package:informasi_akademik_firebase/providers/siswa_provider.dart';
 import 'package:provider/provider.dart';
 import 'services/firestore_service.dart';
@@ -30,11 +29,6 @@ class MyApp extends StatelessWidget {
           create: (context) => firestoreService.getMapels(),
           //  initialData: initialData,
         ),
-        // ChangeNotifierProvider(create: (context) => ProductProvider()),
-        // StreamProvider(
-        //   create: (context) => firestoreService.getProducts(),
-        //   //  initialData: initialData,
-        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

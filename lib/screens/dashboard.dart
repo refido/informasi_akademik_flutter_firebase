@@ -9,7 +9,7 @@ class Dashboard extends StatelessWidget {
     final avatar = Padding(
       padding: EdgeInsets.all(20),
       child: Hero(
-          tag: 'Discipulus',
+          tag: 'Siswa',
           child: SizedBox(
             height: 160,
             child: Image.network(imageUrl),

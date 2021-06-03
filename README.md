@@ -4,9 +4,6 @@ Login CRUD with firebase
 
 ## Known BUGS & TO DO
 
-- int to string or string to int
-- infinite loading siswas 
-- cant read data siswas
 - ugly ui
 ## Getting Started
 

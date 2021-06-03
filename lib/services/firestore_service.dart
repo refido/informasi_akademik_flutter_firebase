@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:informasi_akademik_firebase/models/mapel.dart';
-import 'package:informasi_akademik_firebase/models/product.dart';
 import 'package:informasi_akademik_firebase/models/siswa.dart';
 
 class FirestoreService {
@@ -34,24 +33,5 @@ class FirestoreService {
 
   Future<void> removeMapel(String mapelId) {
     return _db.collection('mapels').doc(mapelId).delete();
-  }
-
-  //product
-  Future<void> saveProduct(Product product) {
-    return _db
-        .collection('products')
-        .doc(product.productId)
-        .set(product.toMap());
-  }
-
-  Stream<List<Product>> getProducts() {
-    return _db.collection('products').snapshots().map((snapshot) => snapshot
-        .docs
-        .map((document) => Product.fromFirestore(document.data()))
-        .toList());
-  }
-
-  Future<void> removeProduct(String productId) {
-    return _db.collection('products').doc(productId).delete();
   }
 }

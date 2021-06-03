@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-            text: 'Welcome to variis scholarum .',
+            text: 'Welcome.',
             style: TextStyle(color: Colors.black, fontSize: 20)),
       ),
     );

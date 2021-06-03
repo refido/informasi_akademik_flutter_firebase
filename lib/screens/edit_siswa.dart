@@ -14,14 +14,14 @@ class EditSiswa extends StatefulWidget {
 
 class _EditSiswaState extends State<EditSiswa> {
   final nimController = TextEditingController();
-  final namaSiswaController = TextEditingController();
-  final jenisKelaminController = TextEditingController();
+  final namaController = TextEditingController();
+  final jkController = TextEditingController();
 
   @override
   void dispose() {
     nimController.dispose();
-    namaSiswaController.dispose();
-    jenisKelaminController.dispose();
+    namaController.dispose();
+    jkController.dispose();
     super.dispose();
   }
 
@@ -30,8 +30,8 @@ class _EditSiswaState extends State<EditSiswa> {
     if (widget.siswa == null) {
       //New Record
       nimController.text = "";
-      namaSiswaController.text = "";
-      jenisKelaminController.text = "";
+      namaController.text = "";
+      jkController.text = "";
       new Future.delayed(Duration.zero, () {
         final siswaProvider =
             Provider.of<SiswaProvider>(context, listen: false);
@@ -40,8 +40,8 @@ class _EditSiswaState extends State<EditSiswa> {
     } else {
       //Controller Update
       nimController.text = widget.siswa.nim.toString();
-      namaSiswaController.text = widget.siswa.namaSiswa;
-      jenisKelaminController.text = widget.siswa.jenisKelamin;
+      namaController.text = widget.siswa.namaSiswa;
+      jkController.text = widget.siswa.jenisKelamin;
       //State Update
       new Future.delayed(Duration.zero, () {
         final siswaProvider =
@@ -64,26 +64,26 @@ class _EditSiswaState extends State<EditSiswa> {
         child: ListView(
           children: <Widget>[
             TextField(
-              controller: nimController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: 'Nim Siswa'),
-              onChanged: (value) {
-                siswaProvider.changeNim(value);
-              },
+              controller: nimController,
+              decoration: InputDecoration(hintText: 'Nim'),
+              onChanged: (value) => siswaProvider.changeNim(value),
             ),
             TextField(
-              controller: namaSiswaController,
               keyboardType: TextInputType.text,
+              controller: namaController,
               decoration: InputDecoration(hintText: 'Nama Siswa'),
               onChanged: (value) {
                 siswaProvider.changeNamaSiswa(value);
               },
             ),
             TextField(
-              controller: jenisKelaminController,
               keyboardType: TextInputType.text,
+              controller: jkController,
               decoration: InputDecoration(hintText: 'Jenis Kelamin'),
-              onChanged: (value) => siswaProvider.changeJenisKelamin(value),
+              onChanged: (value) {
+                siswaProvider.changeJenisKelamin(value);
+              },
             ),
             SizedBox(
               height: 20.0,

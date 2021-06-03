@@ -34,33 +34,36 @@ class SiswaProvider with ChangeNotifier {
 
   //read
   loadValues(Siswa siswa) {
+    _siswaId = siswa.siswaId;
     _nim = siswa.nim;
     _namaSiswa = siswa.namaSiswa;
     _jenisKelamin = siswa.jenisKelamin;
   }
 
-//create/update
+  //create/update
   saveSiswa() {
     print(_siswaId);
     if (_siswaId == null) {
       var newSiswa = Siswa(
-          nim: nim,
-          namaSiswa: namaSiswa,
-          jenisKelamin: jenisKelamin,
-          siswaId: uuid.v4());
+        siswaId: uuid.v4(),
+        nim: nim,
+        namaSiswa: namaSiswa,
+        jenisKelamin: jenisKelamin,
+      );
       firestoreService.saveSiswa(newSiswa);
     } else {
       //Update
       var updatedSiswa = Siswa(
-          nim: nim,
-          namaSiswa: namaSiswa,
-          jenisKelamin: jenisKelamin,
-          siswaId: _siswaId);
+        siswaId: _siswaId,
+        nim: _nim,
+        namaSiswa: _namaSiswa,
+        jenisKelamin: _jenisKelamin,
+      );
       firestoreService.saveSiswa(updatedSiswa);
     }
   }
 
-//delete
+  //delete
   removeSiswa(String siswaId) {
     firestoreService.removeSiswa(siswaId);
   }
