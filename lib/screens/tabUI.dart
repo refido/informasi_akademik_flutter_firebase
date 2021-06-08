@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informasi_akademik_firebase/screens/dashboard.dart';
 import 'package:informasi_akademik_firebase/screens/siswas.dart';
 import 'package:informasi_akademik_firebase/screens/mapels.dart';
 
@@ -11,7 +12,7 @@ class _TabUIState extends State<TabUI> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
           appBar: AppBar(
             title: Text("Informasi Akademik"),
@@ -23,6 +24,9 @@ class _TabUIState extends State<TabUI> {
                 Tab(
                   text: "Mapel",
                 ),
+                Tab(
+                  text: "Profile",
+                ),
               ],
             ),
           ),
@@ -30,6 +34,7 @@ class _TabUIState extends State<TabUI> {
             children: [
               Siswas(),
               Mapels(),
+              Dashboard(),
             ],
           )),
     );

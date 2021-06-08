@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:informasi_akademik_firebase/screens/dashboard2.dart';
 import 'package:informasi_akademik_firebase/screens/dashboard.dart';
+import 'package:informasi_akademik_firebase/screens/tabUI.dart';
 import 'package:informasi_akademik_firebase/services/sign_in.dart';
 
 class LoginPage extends StatefulWidget {
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return Dashboard2();
+                        return Dashboard();
                       },
                     ),
                   );
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return Dashboard();
+                      return TabUI();
                     },
                   ),
                 );
@@ -144,12 +144,12 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
 
-    final buttonForgotPassword = TextButton(
-        child: Text(
-          'Not registered yet?',
-          style: TextStyle(color: Colors.grey, fontSize: 16),
-        ),
-        onPressed: null);
+    // final buttonForgotPassword = TextButton(
+    //     child: Text(
+    //       'Not registered yet?',
+    //       style: TextStyle(color: Colors.grey, fontSize: 16),
+    //     ),
+    //     onPressed: null);
 
     return SafeArea(
         child: Scaffold(
@@ -164,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
             inputPassword,
             buttonLogin,
             _signInButton(),
-            buttonForgotPassword
+            // buttonForgotPassword
           ],
         ),
       ),

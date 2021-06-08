@@ -6,14 +6,12 @@ import 'tabUI.dart';
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final avatar = Padding(
-      padding: EdgeInsets.all(20),
-      child: Hero(
-        tag: 'Siswa',
-        child: SizedBox(
-          height: 160,
-          child: Image.network(imageUrl),
-        ),
+    final head = Padding(
+      padding: EdgeInsets.all(10),
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+            text: email, style: TextStyle(color: Colors.black, fontSize: 20)),
       ),
     );
 
@@ -66,7 +64,7 @@ class Dashboard extends StatelessWidget {
           child: ListView(
             shrinkWrap: true,
             padding: EdgeInsets.symmetric(horizontal: 20),
-            children: <Widget>[avatar, description, buttonToNext, buttonLogout],
+            children: <Widget>[head, description, buttonToNext, buttonLogout],
           ),
         ),
       ),
