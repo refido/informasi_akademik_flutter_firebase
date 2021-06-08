@@ -12,6 +12,7 @@ class _MapelsState extends State<Mapels> {
   @override
   Widget build(BuildContext context) {
     final mapels = Provider.of<List<Mapel>>(context);
+    TextStyle textStyle = Theme.of(context).textTheme.headline6;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -29,20 +30,31 @@ class _MapelsState extends State<Mapels> {
           ? ListView.builder(
               itemCount: mapels.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    mapels[index].kodeMapel,
-                  ),
-                  trailing: Text(mapels[index].mataPelajaran),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => EditMapel(
-                          mapels[index],
+                return Card(
+                  color: Colors.blue[50],
+                  elevation: 1.0,
+                  child: ListTile(
+                    title: Text(
+                      mapels[index].mataPelajaran,
+                      style: textStyle,
+                    ),
+                    subtitle: Text(
+                      mapels[index].kodeMapel,
+                    ),
+                    trailing: Text(
+                      mapels[index].pengajar,
+                      style: textStyle,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => EditMapel(
+                            mapels[index],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 );
               },
             )

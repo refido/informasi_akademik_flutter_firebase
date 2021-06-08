@@ -10,13 +10,9 @@ class Siswas extends StatefulWidget {
 
 class _SiswasState extends State<Siswas> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final siswas = Provider.of<List<Siswa>>(context);
+    TextStyle textStyle = Theme.of(context).textTheme.headline6;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -34,20 +30,31 @@ class _SiswasState extends State<Siswas> {
           ? ListView.builder(
               itemCount: siswas.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    siswas[index].nim.toString(),
-                  ),
-                  trailing: Text(siswas[index].namaSiswa),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => EditSiswa(
-                          siswas[index],
+                return Card(
+                  color: Colors.blue[50],
+                  elevation: 1.0,
+                  child: ListTile(
+                    title: Text(
+                      siswas[index].namaSiswa,
+                      style: textStyle,
+                    ),
+                    subtitle: Text(
+                      siswas[index].nim.toString(),
+                    ),
+                    trailing: Text(
+                      siswas[index].jenisKelamin,
+                      style: textStyle,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => EditSiswa(
+                            siswas[index],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 );
               },
             )

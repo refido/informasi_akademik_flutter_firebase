@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SiswaProvider()),
         StreamProvider(
           create: (context) => firestoreService.getSiswas(),
-          // initialData: initialData,
+          initialData: null,
         ),
         ChangeNotifierProvider(create: (context) => MapelProvider()),
         StreamProvider(
           create: (context) => firestoreService.getMapels(),
-          //  initialData: initialData,
+          initialData: null,
         ),
       ],
       child: MaterialApp(
