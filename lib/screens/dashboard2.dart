@@ -3,7 +3,7 @@ import 'login_page.dart';
 import 'package:informasi_akademik_firebase/services/sign_in.dart';
 import 'tabUI.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatar = Padding(
@@ -12,7 +12,7 @@ class Dashboard extends StatelessWidget {
         tag: 'Siswa',
         child: SizedBox(
           height: 160,
-          child: Image.network(imageUrl),
+          child: Image.asset('assets/merlin.jpg'),
         ),
       ),
     );
@@ -25,7 +25,6 @@ class Dashboard extends StatelessWidget {
             text: name, style: TextStyle(color: Colors.black, fontSize: 20)),
       ),
     );
-
     final buttonToNext = TextButton(
         child: Text(
           'Informasi Akademik',
@@ -60,16 +59,16 @@ class Dashboard extends StatelessWidget {
         ),
       ),
     );
+
     return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: ListView(
-            shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            children: <Widget>[avatar, description, buttonToNext, buttonLogout],
-          ),
+        child: Scaffold(
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          children: <Widget>[avatar, description, buttonToNext, buttonLogout],
         ),
       ),
-    );
+    ));
   }
 }

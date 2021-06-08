@@ -7,9 +7,9 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 String name;
 String email;
 String imageUrl;
-
+String currentUsers;
 Future<String> signInWithGoogle() async {
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
@@ -22,8 +22,9 @@ Future<String> signInWithGoogle() async {
   final User user = authResult.user;
   if (user != null) {
 // Checking if email and name is null
-    assert(user.email != null);
+    assert(user.uid != null);
     assert(user.displayName != null);
+    assert(user.email != null);
     assert(user.photoURL != null);
     name = user.displayName;
     email = user.email;
@@ -36,6 +37,7 @@ Future<String> signInWithGoogle() async {
     assert(await user.getIdToken() != null);
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
+    currentUsers = currentUser.uid;
     print('signInWithGoogle succeeded: $user');
     return '$user';
   }
@@ -47,8 +49,7 @@ Future<void> signOutGoogle() async {
   print("User Signed Out");
 }
 
-Future<User> signInWithEmail(
-    String namanya, String emailnya, String passwordnya) async {
+Future<User> signInWithEmail(String emailnya, String passwordnya) async {
   await Firebase.initializeApp();
   User user;
   try {
@@ -59,7 +60,7 @@ Future<User> signInWithEmail(
 
     user = userCredential.user;
     if (user != null) {
-      name = namanya;
+      name = user.email;
       email = user.email;
     }
   } on FirebaseAuthException catch (e) {
@@ -74,5 +75,6 @@ Future<User> signInWithEmail(
 
 Future<String> signOut() async {
   await _auth.signOut();
-  return 'User signed out';
+  _auth.currentUser;
+  return currentUsers + 'signed out';
 }

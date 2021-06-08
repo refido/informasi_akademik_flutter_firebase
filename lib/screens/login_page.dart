@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dashboard.dart';
+import 'package:informasi_akademik_firebase/screens/dashboard2.dart';
+import 'package:informasi_akademik_firebase/screens/dashboard.dart';
 import 'package:informasi_akademik_firebase/services/sign_in.dart';
 
 class LoginPage extends StatefulWidget {
@@ -8,16 +9,20 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final logo = Padding(
       padding: EdgeInsets.all(20),
       child: Hero(
-          tag: 'hero',
-          child: SizedBox(
-            height: 160,
-            child: Image.asset('assets/esoteric.jpg'),
-          )),
+        tag: 'hero',
+        child: SizedBox(
+          height: 160,
+          child: Image.asset('assets/esoteric.jpg'),
+        ),
+      ),
     );
     final description = Padding(
       padding: EdgeInsets.all(10),
@@ -32,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     final inputEmail = Padding(
       padding: EdgeInsets.only(bottom: 10),
       child: TextField(
+        controller: emailController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Email',
@@ -44,6 +50,7 @@ class _LoginPageState extends State<LoginPage> {
     final inputPassword = Padding(
       padding: EdgeInsets.only(bottom: 20),
       child: TextField(
+        controller: passwordController,
         keyboardType: TextInputType.text,
         obscureText: true,
         decoration: InputDecoration(
@@ -70,8 +77,24 @@ class _LoginPageState extends State<LoginPage> {
             primary: Colors.green,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Dashboard()));
+            String emailnya = emailController.text;
+            String passwordnya = passwordController.text;
+            signInWithEmail(
+              emailnya,
+              passwordnya,
+            ).then(
+              (result) {
+                if (result != null) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Dashboard2();
+                      },
+                    ),
+                  );
+                }
+              },
+            );
           },
         ),
       ),
@@ -79,25 +102,24 @@ class _LoginPageState extends State<LoginPage> {
 
     Widget _signInButton() {
       return OutlinedButton(
-        // splashColor: Colors.grey,
         onPressed: () {
-          signInWithGoogle().then((result) {
-            if (result != null) {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return Dashboard();
-                  },
-                ),
-              );
-            }
-          });
+          signInWithGoogle().then(
+            (result) {
+              if (result != null) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Dashboard();
+                    },
+                  ),
+                );
+              }
+            },
+          );
         },
         style: OutlinedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-
-          // highlightElevation: 0,
           side: BorderSide(color: Colors.grey),
         ),
         child: Padding(
@@ -106,7 +128,6 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Image(image: AssetImage("image/google_logo.png"), height: 35.0),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(

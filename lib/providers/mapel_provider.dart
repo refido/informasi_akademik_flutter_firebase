@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:informasi_akademik_firebase/services/firestore_service.dart';
 import 'package:uuid/uuid.dart';
 import 'package:informasi_akademik_firebase/models/mapel.dart';
+import 'package:informasi_akademik_firebase/services/sign_in.dart';
 
 class MapelProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
@@ -9,12 +10,15 @@ class MapelProvider with ChangeNotifier {
   String _kodeMapel;
   String _mataPelajaran;
   String _pengajar;
+  String _dataUser;
   var uuid = Uuid();
 
   //Getters
+  String get mapelId => _mapelId;
   String get kodeMapel => _kodeMapel;
   String get mataPelajaran => _mataPelajaran;
   String get pengajar => _pengajar;
+  String get dataUser => _dataUser;
 
   //Setters
   changeKodeMapel(String value) {
@@ -32,12 +36,18 @@ class MapelProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  changeDataUser() {
+    _dataUser = currentUsers;
+    notifyListeners();
+  }
+
   //read
   loadValues(Mapel mapel) {
     _mapelId = mapel.mapelId;
     _kodeMapel = mapel.kodeMapel;
     _mataPelajaran = mapel.mataPelajaran;
     _pengajar = mapel.pengajar;
+    _dataUser = mapel.dataUser;
   }
 
   //create/update
@@ -49,6 +59,7 @@ class MapelProvider with ChangeNotifier {
         kodeMapel: kodeMapel,
         mataPelajaran: mataPelajaran,
         pengajar: pengajar,
+        dataUser: currentUsers,
       );
       firestoreService.saveMapel(newMapel);
     } else {
@@ -58,6 +69,7 @@ class MapelProvider with ChangeNotifier {
         kodeMapel: _kodeMapel,
         mataPelajaran: _mataPelajaran,
         pengajar: _pengajar,
+        dataUser: _dataUser,
       );
       firestoreService.saveMapel(updatedMapel);
     }

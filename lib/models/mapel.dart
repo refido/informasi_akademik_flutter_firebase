@@ -3,12 +3,14 @@ class Mapel {
   final String kodeMapel;
   final String mataPelajaran;
   final String pengajar;
+  final String dataUser;
 
   Mapel({
     this.mapelId,
     this.kodeMapel,
     this.mataPelajaran,
     this.pengajar,
+    this.dataUser,
   });
 
   Map<String, dynamic> toMap() {
@@ -17,6 +19,7 @@ class Mapel {
       'kodeMapel': kodeMapel,
       'mataPelajaran': mataPelajaran,
       'pengajar': pengajar,
+      'dataUser': dataUser,
     };
   }
 
@@ -24,5 +27,6 @@ class Mapel {
       : mapelId = firestore['mapelId'],
         kodeMapel = firestore['kodeMapel'],
         mataPelajaran = firestore['mataPelajaran'],
-        pengajar = firestore['pengajar'];
+        pengajar = firestore['pengajar'],
+        dataUser = firestore['dataUser'];
 }

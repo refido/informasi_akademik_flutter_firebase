@@ -3,12 +3,14 @@ class Siswa {
   final int nim;
   final String namaSiswa;
   final String jenisKelamin;
+  final String dataUser;
 
   Siswa({
     this.siswaId,
     this.nim,
     this.namaSiswa,
     this.jenisKelamin,
+    this.dataUser,
   });
 
   Map<String, dynamic> toMap() {
@@ -17,6 +19,7 @@ class Siswa {
       'nim': nim,
       'namaSiswa': namaSiswa,
       'jenisKelamin': jenisKelamin,
+      'dataUser': dataUser,
     };
   }
 
@@ -24,5 +27,6 @@ class Siswa {
       : siswaId = firestore['siswaId'],
         nim = firestore['nim'],
         namaSiswa = firestore['namaSiswa'],
-        jenisKelamin = firestore['jenisKelamin'];
+        jenisKelamin = firestore['jenisKelamin'],
+        dataUser = firestore['dataUser'];
 }
