@@ -4,13 +4,13 @@ Login CRUD in firebase
 
 ## example
 
-![gambar 1](screenshot/1.jpg)
-![gambar 2](screenshot/2.jpg)
-![gambar 3](screenshot/3.jpg)
-![gambar 4](screenshot/4.jpg)
-![gambar 5](screenshot/5.jpg)
-![gambar 6](screenshot/6.jpg)
-![gambar 7](screenshot/7.jpg)
+![gambar 1](screenshots/1.jpg)
+![gambar 2](screenshots/2.jpg)
+![gambar 3](screenshots/3.jpg)
+![gambar 4](screenshots/4.jpg)
+![gambar 5](screenshots/5.jpg)
+![gambar 6](screenshots/6.jpg)
+![gambar 7](screenshots/7.jpg)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
